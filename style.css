@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ซ่อน Scrollbar (ไอ้แท่งดำๆ จะหายไป) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: whitesmoke;
+    /* เปลี่ยนฟอนต์เป็น Mali ให้อ่านแล้วดูขี้อ้อน */
+    font-family: 'Mali', cursive, sans-serif;
+    overflow: hidden; /* กันหน้าจอเลื่อนไปมาตอนปุ่มวิ่งหนี */
+}
+
+#wrapper {
+    text-align: center;
+    width: 90%;
+    max-width: 600px; /* จำกัดความกว้างไม่ให้ยืดเกินไป */
+    padding: 20px;
+}
+
+#gif {
+    /* ปรับขนาดรูปให้พอดี ไม่ล้นจอ */
+    max-width: 300px; 
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px; /* มนมุมรูปนิดนึง */
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5em; /* ขนาดตัวปกติ */
+    color: #e94d58;
+    margin: 15px 0;
+    line-height: 1.6; /* ระยะห่างบรรทัด */
+    min-height: 60px; /* กันข้อความกระตุก */
+}
+
+/* คลาสสำหรับข้อความบอกรัก (JS จะเรียกใช้) */
+.love-msg {
+    font-size: 1.1em;
+    color: #555;
+}
+.highlight {
+    color: #ff6b6b;
+    font-weight: bold;
+    display: block; /* ขึ้นบรรทัดใหม่ */
+    margin-top: 10px;
+}
+.love-text {
+    font-size: 1.4em;
+    color: #ff4757;
+    font-weight: 700;
+    display: block;
+    margin-top: 15px;
+    text-shadow: 2px 2px 0px rgba(255, 183, 197, 0.4);
+}
+
+#btn-group {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    position: relative; /* ให้ปุ่มอ้างอิงจากกล่องนี้ */
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid #e94d58;
+    font-family: 'Mali', cursive; /* ฟอนต์ปุ่ม */
+    transition: transform 0.2s; /* เอฟเฟกต์กดปุ่ม */
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#yes-btn {
+    background: #e94d58;
+    margin-right: 20px; /* เว้นระยะห่างปุ่ม */
+}
+
+#no-btn {
+    background: white;
+    color: #e94d58;
+    cursor: not-allowed;
+    position: absolute; /* เพื่อให้วิ่งหนีได้ */
+    /* เริ่มต้นให้มันวางคู่กันก่อน */
+    right: 50%;
+    transform: translateX(180px); /* ดันไปทางขวา */
+}
+
+/* ปรับตำแหน่ง Yes ให้อยู่ทางซ้าย */
+#yes-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-180px); /* ดันไปทางซ้าย */
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 500px) {
+    #yes-btn { transform: translateX(-90px); width: 100px; }
+    #no-btn { transform: translateX(90px); width: 100px; }
+    h2 { font-size: 1.2em; }
+}
